@@ -1,0 +1,83 @@
+data;
+
+#--------DATA PROBLEMA COMPARTIMENTOS-------#
+
+set MALETAS := maleta1 maleta2 maleta3;
+
+set COMPARTIMENTOS := comp1 comp2 comp3 comp4 comp5 comp6;
+
+set COMPARTIMENTOS_DELANTEROS := comp1 comp4;
+
+set COMPARTIMENTOS_TRASEROS := comp3 comp6;
+
+set CARACTERISTICAS_M := uds peso alto largo ancho vol coste;
+
+set CARACTERISTICAS_C := peso vol;
+
+#CARACTERISTICAS DE CADA TIPO DE MALETA
+param caracteristicas_m : maleta1 maleta2 maleta3 :=
+uds			 22      18      11
+peso			 7       8       10
+alto			 30      40      50
+largo			 20      20      30
+ancho			 10      10      20
+vol			 6000	 8000    30000
+coste			 10	 20      30;
+
+#CARACTERISTICAS DE CADA TIPO DE COMPARTIMENTO
+param caracteristicas_c : comp1 comp2 comp3 comp4 comp5 comp6 :=
+peso		  	50	60	40	50	60	40
+vol			100000	150000	70000	100000	150000	70000;
+
+
+#--------DATA PROBLEMA VUELOS-------#
+
+set VUELOS := v1 v2 v3 v4 v5 v6;
+
+set VUELOS_IDA := v1 v3 v5;
+
+set VUELOS_VUELTA := v2 v4 v6;
+
+set TRIPULACION := p1 p2 p3 a1 a2 a3;
+
+set PILOTOS := p1 p2 p3;
+
+set AUXILIARES := a1 a2 a3;
+
+set CARACTERISTICAS_P_DESCANSO := descanso;
+
+set CARACTERISTICAS_V := duracion;
+
+#PAGOS DE CADA TRIPULANTE PARA CADA VUELO POR HORA
+param pagos_trip : v1 	v2 		v3 		v4 		v5 		v6 :=
+				p1	 20	    17	    25	    34	    31	    22
+				p2	 28	    15	    23	    35	    37	    21
+				p3	 27	    16	    24	    31	    35	    29
+				a1	 17     16	    14	    14	    11	    12
+				a2	 16	    14	    12	    15	    17	    11
+				a3	 15     15	    14	    11	    15	    19;
+
+#DESCANSO MINIMO DE CADA PILOTO (MINS)
+param descanso_piloto : descanso :=
+				p1	 	  60
+				p2	 	  25
+				p3	 	  30;
+
+#TIEMPO QUE TRASCURRE ENTRE VUELOS CONSECUTIVOS (MINS)
+param t_entre_vuelos : v1 	v2 		v3 		v4 		v5 		v6 :=
+                 v1	9999	45	    9999	315	    9999	605
+                 v2	9999	9999	60	    9999	345	    9999
+                 v3	9999	9999	9999	15	    9999	305
+                 v4	9999	9999	9999	9999	100	    9999
+                 v5	9999	9999	9999	9999	9999	50
+                 v6	9999	9999	9999	9999	9999	9999;
+
+param duracion_vuelos: duracion:=
+					v1	  75
+					v2	  90
+					v3	  105
+					v4	  65
+					v5	  75
+					v6    70;
+
+end;
